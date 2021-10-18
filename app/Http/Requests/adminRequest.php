@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class loginRequest extends FormRequest
+class adminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,6 +34,7 @@ class loginRequest extends FormRequest
     {
         return [
             'user_name.required'=>'You must enter the user name',
+            'user_name.unique'=>'هذا الموجه موجود بالفعل',
             'password.required'=>'You must enter the password ',
         ];
     }

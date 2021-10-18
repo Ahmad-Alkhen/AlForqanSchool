@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Admin extends Authenticatable
+class Register extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -16,11 +16,8 @@ class Admin extends Authenticatable
 
     protected $fillable = [
         'name',
-        'user_name',
-        'password',
-        'phone',
-        'address',
-        'permission',
+        'date',
+        'admin_id',
         'active',
     ];
 
