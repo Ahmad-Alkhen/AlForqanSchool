@@ -21,7 +21,7 @@ class registerStdController extends Controller
     }
 
     public function create(){
-        $registers = Register::where('active','1')->get();
+        $registers = Register::where('admin_id',Auth::id())->where('active','1')->get();
         $users = User::where('active','1')->get();
 
         return view('admin.registerStds.create',compact('registers','users'));
@@ -30,14 +30,21 @@ class registerStdController extends Controller
     public function store(Request $request){
 
       try {
-       //   $users_id =  json_encode($request->user_id);
-          $users_id =  implode(',',$request->user_id);
+
+   /*       $users_id =  implode(',',$request->user_id);
           Registerstds::create([
                    'register_id'=>$request->register_id,
                    'user_id'=>$users_id,
-               ]);
+               ]);*/
+          $users_ids = $request->user_id;
+          for($i=0 ; $i < count($users_ids); $i++){
+              Registerstds::create([
+                  'register_id'=>$request->register_id,
+                  'user_id'=>$users_ids[$i],
+              ]);
+          }
                 toast('تمت الإضافة بنجاح','success');
-              return redirect()->route('admin.register.index')->with(['success'=>'تمت الإضافة بنجاح']);
+              return redirect()->route('admin.registerStd.create')->with(['success'=>'تمت الإضافة بنجاح']);
 
         }catch (\Exception $exception){
             return $exception ;
@@ -45,65 +52,36 @@ class registerStdController extends Controller
         }
     }
 
-    public function edit($registerId){
-        $register =Register::find($registerId);
-        if(!$register)
-            return redirect()->route('admin.register.index')->with(['error' =>'السجل غير موجود' ]);
-        else
-        return view('admin.registers.edit',compact('register'));
-    }
+    public function delete(Request $request){
 
-    public function update(registerRequest $request,$registerId){
-        try {
+        $registerStd =Registerstds::find($request->id) ;
 
-            $register =Register::find($registerId);
-            if(!$register)
-                return redirect()->route('admin.register.index');
-            else{
-                if (!$request->has('active')){
-                    $active= 0 ;
-                }else
-                    $active = $request->active;
+        if($registerStd){
 
-                $register->update([
-                    'name'=>$request->name,
-                    'date'=>$request->date,
-                    'admin_id'=>Auth::id(),
-                    'active'=>$active,
-                ]);
-                  toast('تمت التعديل بنجاح','success');
-                return redirect()->route('admin.register.index')->with(['success'=>'تمت التعديل بنجاح']);
-            }
-        }catch (\Exception $exception){
-            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
-        }
-    }
-
-
-    public function delete($registerId){
-
-        $register =Register::find($registerId) ;
-
-        if(!$register){
-            return redirect()->route('admin.register.index')->with(['error' =>'السجل غير متوفر' ]);
+            $registerStd->delete();
+          //  toast('تم الحذف بنجاح','success');
+          //  return redirect()->route('admin.registerStd.index')->with(['success' =>'تم الحذف بنجاح' ]);
         }
 
-        $register->delete();
-             toast('تم الحذف بنجاح','success');
-          return redirect()->route('admin.register.index')->with(['success' =>'تم الحذف بنجاح' ]);
+
     }
 
     public function change(Request $request){
 
-        $registerStds =Registerstds::select('id','user_id')->where('register_id',$request->registerId)->first() ;
+   /*     $registerStds =Registerstds::select('id','user_id')->where('register_id',$request->registerId)->first() ;
         $usersId= explode(',',$registerStds->user_id);
-
-
         $usersName=User::select('id','name')->where('active','1')->whereIn('id',$usersId)->get();
-
-
         if(isset($usersId))
           return view('admin.registerStds.changeAjax',compact('usersId','usersName'));
+    */
+
+        $registerId = $request-> registerId ;
+        $regUsers =  Registerstds::select('id','user_id')->where('register_id',$registerId)
+            ->with(['user'=>function($q){
+                $q->select('id','name')->where('active','1');
+            }])->get();
+        if(isset($regUsers))
+            return view('admin.registerStds.changeAjax',compact('regUsers'));
 
     }
 

@@ -41,7 +41,7 @@
         function select_register() {
             // alert( this.value );
             // var id = $('.booking-option').val();
-            var registerId = $('#select_register').find(":selected").val();;
+            var registerId = $('#select_register').find(":selected").val();
        //  alert(registerId)
           $.ajax({
                     type: "POST",

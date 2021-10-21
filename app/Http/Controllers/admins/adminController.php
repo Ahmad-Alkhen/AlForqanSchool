@@ -31,7 +31,7 @@ class adminController extends Controller
                Admin::create([
                    'name'=>$request->name,
                    'user_name'=>$request->user_name,
-                   'password'=>$request->password,
+                   'password'=>bcrypt($request->password),
                    'phone'=>$request->phone,
                    'address'=>$request->address,
                    'active'=>$active,
@@ -65,16 +65,18 @@ class adminController extends Controller
                 }else
                     $active = $request->active;
 
-                $admin->update([
-                    'name'=>$request->name,
-                    'user_name'=>$request->user_name,
-                    'password'=>$request->password,
-                    'phone'=>$request->phone,
-                    'address'=>$request->address,
-                    'active'=>$active,
-                ]);
-                  toast('تمت العديل بنجاح','success');
-                return redirect()->route('admin.index')->with(['success'=>'تمت العديل بنجاح']);
+
+                    $admin->update([
+                        'name'=>$request->name,
+                        'user_name'=>$request->user_name,
+                        'password'=>bcrypt($request->password),
+                        'phone'=>$request->phone,
+                        'address'=>$request->address,
+                        'active'=>$active,
+                    ]);
+
+                  toast('تم العديل بنجاح','success');
+                return redirect()->route('admin.index')->with(['success'=>'تم العديل بنجاح']);
             }
         }catch (\Exception $exception){
             toast('حصل خطأ يرجى المحاولة لاحقاً ','error');

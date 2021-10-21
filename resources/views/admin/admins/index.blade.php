@@ -7,11 +7,11 @@
 
 @section('content-template')
     <div class="card">
-        <table class="table table-striped table-hover " id="customers-table">
+        <table class="table table-striped table-hover " id="admin-table">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">الاسم</th>
+                <th scope="col">المشرف</th>
                 <th scope="col">الحساب</th>
                 <th scope="col">العنوان</th>
                 <th scope="col">الهاتف</th>
@@ -29,14 +29,16 @@
                         <td>{{$admin->address}}</td>
                         <td>{{$admin->phone}}</td>
                         <td>{{$admin->active==1? 'نشط' :'غير نشط'}}</td>
-                        <td><a href="{{route('admin.edit',$admin->id)}}" > <i class="feather icon-edit"></i></a>
-                            <a href="{{route('admin.delete',$admin->id)}}" > <i class="feather icon-x-circle"></i></a>
+                        <td>
+                            <a href="{{route('admin.delete',$admin->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
+                            <a href="{{route('admin.edit',$admin->id)}}" title="تعديل" > <i class="feather icon-edit"></i></a>
                         </td>
-                    </tr>ً
+                    </tr>
                 @endforeach
             @endisset
             </tbody>
         </table>
     </div>
+
 
 @endsection

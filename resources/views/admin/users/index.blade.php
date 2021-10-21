@@ -7,11 +7,11 @@
 
 @section('content-template')
     <div class="card">
-        <table class="table table-striped table-hover " id="customers-table">
+        <table class="table table-striped table-hover" id="students-table">
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">الاسم</th>
+                <th scope="col">الطالب</th>
                 <th scope="col">الحساب</th>
                 <th scope="col">العنوان</th>
                 <th scope="col">الهاتف</th>
@@ -31,10 +31,12 @@
                         <td>{{$user->phone}}</td>
                         <td>{{$user->birthday}}</td>
                         <td>{{$user->active==1? 'نشط' :'غير نشط'}}</td>
-                        <td><a href="{{route('admin.user.edit',$user->id)}}" > <i class="feather icon-edit"></i></a>
-                            <a href="{{route('admin.user.delete',$user->id)}}" > <i class="feather icon-x-circle"></i></a>
+                        <td>
+                            <a href="{{route('admin.user.delete',$user->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
+                            <a href="{{route('admin.user.edit',$user->id)}}" title="تعديل"> <i class="feather icon-edit"></i></a>
                         </td>
-                    </tr>ً
+
+                    </tr>
                 @endforeach
             @endisset
             </tbody>

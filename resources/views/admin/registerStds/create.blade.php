@@ -27,7 +27,7 @@
                 @enderror
             </div>
             <div class="input-group mb-3">
-                <label for="adminName" class="col-sm-2 col-form-label">اسم السجل</label>
+                <label for="adminName" class="col-sm-2 col-form-label">الطلاب</label>
                 <select name="user_id[]" class="select2 form-control" multiple>
                     <optgroup label="اسم الطالب ">
                         @isset($users)

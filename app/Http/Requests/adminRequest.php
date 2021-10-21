@@ -25,7 +25,7 @@ class adminRequest extends FormRequest
     {
         return [
             'user_name'=>'required|max:100',
-            'password'=>'required|max:200',
+            'password'=>'max:200',
         ];
     }
 
@@ -35,7 +35,6 @@ class adminRequest extends FormRequest
         return [
             'user_name.required'=>'You must enter the user name',
             'user_name.unique'=>'هذا الموجه موجود بالفعل',
-            'password.required'=>'You must enter the password ',
         ];
     }
 

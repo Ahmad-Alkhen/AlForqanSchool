@@ -11,7 +11,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">الاسم</th>
+                <th scope="col">السجل</th>
                 <th scope="col">التاريخ</th>
                 <th scope="col">الحالة</th>
                 <th scope="col">النشاط</th>
@@ -25,8 +25,9 @@
                         <td>{{$register->name}}</td>
                         <td>{{$register->date}}</td>
                         <td>{{$register->active==1? 'نشط' :'غير نشط'}}</td>
-                        <td><a href="{{route('admin.register.edit',$register->id)}}" > <i class="feather icon-edit"></i></a>
-                            <a href="{{route('admin.register.delete',$register->id)}}" > <i class="feather icon-x-circle"></i></a>
+                        <td>
+                            <a href="{{route('admin.register.delete',$register->id)}}" title="حذف"> <i class="feather icon-x-circle"></i></a>
+                            <a href="{{route('admin.register.edit',$register->id)}}" title="تعديل" > <i class="feather icon-edit"></i></a>
                         </td>
                     </tr>
                 @endforeach

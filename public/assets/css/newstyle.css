@@ -1,3 +1,12 @@
+body{
+    font-size: 16px;
+}
+.btn-primary {
+    background-color: #037bb3;
+    border-color: #04a9f5;
+    border-radius: 1.5em;
+}
+
 /*-------------------login page------------------*/
 .error_mes {
     width: 100%;
@@ -5,6 +14,13 @@
     font-size: 80%;
     color: #dc3545;
 }
+
+/*-------------------admin page------------------*/
+.card .dataTables_wrapper .row:first-child{
+    direction: ltr;
+}
+
+
 
 /*------------------------ bookings -> create  ---------------------*/
 .dropdown-menu > li.active > a, .dropdown-menu > li:active > a, .dropdown-menu > li:focus > a, .dropdown-menu > li:hover > a {
@@ -22,6 +38,23 @@
     right: 9px;
     margin-top: -3px;
     vertical-align: middle;
+}
+
+
+
+
+
+/*------------------ nav bar   -----------------------*/
+.b-brand .b-bg {
+    background: linear-gradient(
+        -135deg, #7b938d 0%, #38b3cf 100%);
+}
+.b-brand .b-bg img {
+    width: 55px;
+    height: 55px;
+}
+.b-brand .b-title {
+    margin-left: 30px;
 }
 
 
@@ -100,4 +133,18 @@ font-size: 16px;
 
 .adminActive {
     margin-right: 49px;
+}
+
+
+/*------------------ marks page ------------------*/
+.tbody_marks .form-control{
+    border-radius: 1.25rem;
+}
+.tbody_marks .btn-success{
+    border-radius: 1.25rem;
+}
+
+#marks-table thead tr th {
+
+    text-align: center;
 }

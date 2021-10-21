@@ -8,7 +8,7 @@
 @section('content-template')
     <div class="card">
         <div class="card-body text-center">
-            <form action="{{route('admin.store',$admin->id)}}" method="post">
+            <form action="{{route('admin.update',$admin->id)}}" method="post">
                 @csrf
 
                 <div class="input-group mb-3">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <label for="adminPassword" class="col-sm-2 col-form-label">كلمة المرور</label>
-                    <input id='adminPassword' name="password" type="password" class="form-control" placeholder="كلمة المرور" value="{{$admin->password}}" required>
+                    <input id='adminPassword' name="password" type="password" class="form-control" placeholder="كلمة المرور" required>
                     @error('password')
                     <div class="alert alert-danger error_mes">{{ $message }}</div>
                     @enderror

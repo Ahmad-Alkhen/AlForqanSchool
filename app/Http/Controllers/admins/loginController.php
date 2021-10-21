@@ -26,7 +26,7 @@ class loginController extends Controller
                 return redirect()->route('admin.dash');
             }
             else{
-                toast('email or password is incorrect ','error');
+                toast('اسم المستخدم أو كلمة المرور غير صحيحة ','error');
                 return redirect()->route('admin.getLogin')->with(['error'=>'يوجد خطأ في بيانات الدخول']);
             }
 

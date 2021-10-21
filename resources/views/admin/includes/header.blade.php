@@ -1,15 +1,15 @@
 <header class="navbar pcoded-header navbar-expand-lg navbar-light">
     <div class="m-header">
         <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
-        <a href="index.html" class="b-brand">
+        <a href="{{route('admin.dash')}}" class="b-brand">
             <div class="b-bg">
-                <i class="fas fa-car"></i>
+                <i class="fa fa-university"></i>
             </div>
-            <span class="b-title">Renting Cars</span>
+            <span class="b-title">الفرقان </span>
         </a>
     </div>
     <a class="mobile-menu" id="mobile-header" href="javascript:">
-        <i class="feather icon-more-horizontal"></i>
+        <i class="fa fa-university icon-more-horizontal"></i>
     </a>
     <div class="collapse navbar-collapse">
         <div class="col-6">
@@ -103,7 +103,6 @@
                             <li><a  class="dropdown-item"><i class="feather icon-settings"></i> Settings</a></li>
                             <li><a  class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
                             <li><a  class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
-                            <li><a  class="dropdown-item"><i class="feather icon-lock"></i> Lock Screen</a></li>
                         </ul>
                     </div>
                 </div>

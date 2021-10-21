@@ -29,7 +29,7 @@
 
 
     <!-- Favicon icon -->
-    <link rel="icon" href="{{asset('assets/images/car.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{asset('assets/images/logo.png')}}" type="image/x-icon">
     <!-- fontawesome icon -->
     <link rel="stylesheet" href="{{asset('assets/fonts/fontawesome/css/fontawesome-all.min.css')}}">
     <!-- animation css -->

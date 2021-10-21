@@ -30,7 +30,7 @@ class userController extends Controller
                User::create([
                    'name'=>$request->name,
                    'user_name'=>$request->user_name,
-                   'password'=>$request->password,
+                   'password'=>bcrypt($request->password),
                    'phone'=>$request->phone,
                    'address'=>$request->address,
                    'birthday'=>$request->birthday,
@@ -68,7 +68,7 @@ class userController extends Controller
                 $user->update([
                         'name'=>$request->name,
                         'user_name'=>$request->user_name,
-                        'password'=>$request->password,
+                        'password'=>bcrypt($request->password),
                         'phone'=>$request->phone,
                         'address'=>$request->address,
                         'birthday'=>$request->birthday,
@@ -88,12 +88,12 @@ class userController extends Controller
         $user =User::find($userId) ;
 
         if(!$user){
-            return redirect()->route('admin.index')->with(['error' =>'الطالب غير مسجل' ]);
+            return redirect()->route('admin.user.index')->with(['error' =>'الطالب غير مسجل' ]);
         }
 
         $user->delete();
              toast('تم الحذف بنجاح','success');
-          return redirect()->route('admin.index')->with(['success' =>'تم الحذف بنجاح' ]);
+          return redirect()->route('admin.user.index')->with(['success' =>'تم الحذف بنجاح' ]);
     }
 
 }

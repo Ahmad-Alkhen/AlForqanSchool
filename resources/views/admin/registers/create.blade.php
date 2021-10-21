@@ -13,7 +13,7 @@
 
             <div class="input-group mb-3">
                 <label for="adminName" class="col-sm-2 col-form-label">اسم السجل</label>
-                <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى" required>
+                <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى 2020" required>
                 @error('name')
                  <div class="alert alert-danger error_mes">{{ $message }}</div>
                 @enderror

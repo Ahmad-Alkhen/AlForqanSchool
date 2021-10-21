@@ -1,18 +1,35 @@
-@isset($usersId)
-{{$countUsers= count($usersId)}}
-    @for($i=0;$i<$countUsers;$i++)
-        <tr>
-            <th scope="row">{{$i}}</th>
-            <td>{{ $usersId[$i]}}</td>
-            <td><a  > <i class="feather icon-edit"></i></a>
-                <a  > <i class="feather icon-x-circle"></i></a>
+@isset($regUsers)
+    @foreach($regUsers as $regUser)
+        <tr id="{{'regStd'.$regUser->id}}">
+            <th scope="row">{{$regUser->user->id}}</th>
+            <td>{{$regUser->user->name}}</td>
+            <td>
+                <a class="btn" onclick="click_btn_delete({{$regUser->id}})" title="حذف" > <i class="feather icon-x-circle"></i></a>
             </td>
         </tr>
-    @endfor
+    @endforeach
 @endisset
 
+<script>
+    function click_btn_delete(id){
+        //WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
+       // var checked = confirm(WRN_PROFILE_DELETE);
+        //if(checked == true) {
+
+            $.ajax({
+                type: "POST",
+                url: "{{route('admin.registerStd.delete')}}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                    'id':id
+                },
+                success: function(response) {
+                    // remove deleted times rows
+                    $("#regStd"+id).remove();
+                }
+            });
+       // }
+    }
 
 
-<!--
-
--->
+</script>

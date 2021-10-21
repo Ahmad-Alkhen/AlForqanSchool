@@ -28,60 +28,39 @@
         placeholder: "Select The Booking",
         allowClear: true
     } );
-    $("#select-customer").select2( {
-        placeholder: "Select The Customer",
-        allowClear: true
-    } )
-    $("#select-customer").select2( {
-        placeholder: "Select The Customer name",
-        allowClear: true
-    } );
-    $("#select-car").select2( {
-        placeholder: "Select The Car Number",
-        allowClear: true
-    } );
-    $("#select-owner").select2( {
-        placeholder: "Select The Owner Name",
-        allowClear: true
-    } );
+
 </script>
 
 <script>
-   /*
-    $(document).ready(function() {
-        $('#bookings-table').DataTable( {
-            responsive: {
-                details: {
-                    display: $.fn.dataTable.Responsive.display.modal( {
-                        header: function ( row ) {
-                            var data = row.data();
-                            return 'Details for '+data[0]+' '+data[1];
-                        }
-                    } ),
-                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                        tableClass: 'table'
-                    } )
-                }
-            }
-        } );
-    } );
-*/
     //--------------- Data Table for all table -----------------//
    $(document).ready(function() {
-       $('#customers-table').DataTable();
-       $('#owners-table').DataTable();
-       $('#cars-table').DataTable();
-       $('#bookings-table').DataTable();
-       $('#invoices-table').DataTable();
+       $('#admin-table').DataTable();
+       $('#students-table').DataTable();
+       $('#points-table').DataTable();
+       $('#homework-table').DataTable();
+
    } );
-
-
 </script>
 
 
 
 
+<script>
+    //show message after click inside table info homework
+    $(document).ready(function() {
+        $('.info').click(function() {
+          alert( $(this).text() );
+        });
+    });
 
 
+ /*   $('#customers-table').dataTable( {
+        "language": {
+            "search": "البحث",
+
+        }
+    } );
+*/
+</script>
 
 
