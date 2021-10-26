@@ -17,7 +17,7 @@
                     <i class="feather icon-unlock auth-icon"></i>
                 </div>
                 <h3 class="mb-4">تسجيل الدخول</h3>
-                <form action="{{route('admin.login')}}" method="post">
+                <form action="{{route('site.login')}}" method="post">
                     @csrf
                     <div class="input-group mb-3">
                         <input  name="user_name" type="text" class="form-control" placeholder="الحساب" required>

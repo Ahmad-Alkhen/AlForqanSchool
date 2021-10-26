@@ -19,18 +19,28 @@ class homeworkController extends Controller
 
     public function index(){
 
-
-     $homeworks=Homework::with(['register'=>function($q){
-                         $q->select('id','name');}])
-                    ->where('admin_id',Auth::id())
-                        ->get();
+        if (Auth::user()->permission =='1'){
+            $homeworks=Homework::with(['register'=>function($q){
+                $q->select('id','name');}])
+                ->get();
+        }else{
+            $homeworks=Homework::with(['register'=>function($q){
+                $q->select('id','name');}])
+                ->where('admin_id',Auth::id())
+                ->get();
+        }
 
         return view('admin.homeworks.index',compact('homeworks'));
     }
 
     public function create(){
+        if (Auth::user()->permission =='1'){
+            $registers= Register::where('active','1')-> get();
 
-        $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
+        }else{
+            $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
+        }
+
         return view('admin.homeworks.create',compact('registers'));
     }
 

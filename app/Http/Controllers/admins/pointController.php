@@ -17,19 +17,34 @@ class pointController extends Controller
 
     public function index(){
 
-     $points=Point::with(['user'=>function($q){
+        if (Auth::user()->permission =='1'){
+            $points=Point::with(['user'=>function($q){
+                $q->select('id','name');}])->
+            with(['register'=>function($q){
+                $q->select('id','name');}])
+            ->get();
+        }else{
+
+        $points=Point::with(['user'=>function($q){
                                             $q->select('id','name');}])->
                      with(['register'=>function($q){
                          $q->select('id','name');}])
                     ->where('admin_id',Auth::id())
-
                      ->get();
+        }
         return view('admin.points.index',compact('points'));
     }
 
     public function create(){
-        $users=User::select('id','name')->where('active','1')->get();
-        $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
+
+        if (Auth::user()->permission =='1'){
+            $registers= Register::where('active','1')-> get();
+
+        }else
+            $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
+
+
+        $users=User::select('id','name')->where('active','1')->orderBy('name')->get();
         return view('admin.points.create',compact('users','registers'));
     }
 

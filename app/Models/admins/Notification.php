@@ -4,16 +4,16 @@ namespace App\Models\admins;
 use Illuminate\Database\Eloquent\Model;
 
 
-class Register extends Model
+class Notification extends Model
 {
 
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
-        'date',
         'admin_id',
-        'active',
+        'event',
+        'state',
+        'date',
     ];
 
     public function admin(){

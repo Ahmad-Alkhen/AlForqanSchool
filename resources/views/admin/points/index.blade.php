@@ -24,8 +24,8 @@
                 @foreach($points as $point)
                     <tr id="{{'point_rec'.$point->id}}">
                         <th scope="row">{{$point->id}}</th>
-                        <td>{{$point->user->name}}</td>
-                        <td>{{$point->register->name}}</td>
+                        <td>@isset($point->user->name){{$point->user->name}} @endisset</td>
+                        <td>@isset($point->register->name){{$point->register->name}} @endisset</td>
                         <td>{{$point->points}}</td>
                         <td>{{$point->info}}</td>
                         <td>{{$point->date}}</td>
@@ -42,9 +42,9 @@
 
     <script>
         function click_btn_delete(id){
-            //WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
-            // var checked = confirm(WRN_PROFILE_DELETE);
-            //if(checked == true) {
+            WRN_PROFILE_DELETE = "هل تريد تأكيد الحذف؟ ";
+             var checked = confirm(WRN_PROFILE_DELETE);
+            if(checked == true) {
 
             $.ajax({
                 type: "POST",
@@ -58,7 +58,7 @@
                     $("#point_rec"+id).remove();
                 }
             });
-            // }
+             }
         }
 
 

@@ -12,18 +12,49 @@
              @csrf
 
             <div class="input-group mb-3">
-                <label for="adminName" class="col-sm-2 col-form-label">اسم السجل</label>
-                <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى 2020" required>
-                @error('name')
-                 <div class="alert alert-danger error_mes">{{ $message }}</div>
-                @enderror
+                <div class="col-3">
+                    <label for="adminName" class=" col-form-label">اسم السجل</label>
+                </div>
+                <div class="col-9">
+                    <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى 2020" required>
+                    @error('name')
+                    <div class="alert alert-danger error_mes">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
-            <div class="input-group mb-3">
-                 <label for="adminUsername" class="col-sm-2 col-form-label">التاريخ</label>
-                 <input id='adminUsername' name="date" type="date" class="form-control" placeholder="" required value="{{date('Y-m-d')}}">
-                 @error('date')
-                 <div class="alert alert-danger error_mes">{{ $message }}</div>
-                 @enderror
+
+             @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
+             <div class=" input-group mb-3">
+                 <div class="col-3">
+                     <label for="adminName" class=" col-form-label">اسم المشرف</label>
+                 </div>
+                 <div class="col-9">
+                     <select id="adminName" name="admin_id" class=" select2 form-control" required>
+                         <option value="" disabled selected> اختر المشرف  </option>
+                         @isset($admins)
+                             @foreach($admins as $admin)
+                                 <option value="{{$admin->id}}">{{$admin->name}} </option>
+                             @endforeach
+                         @endisset
+                     </select>
+                     @error('admin_id')
+                     <div class="alert alert-danger error_mes">{{ $message }}</div>
+                     @enderror
+                 </div>
+             </div>
+             @endif
+
+             <div class="input-group mb-3">
+                 <div class="col-3">
+                     <label for="adminUsername" class=" col-form-label">التاريخ</label>
+                 </div>
+
+                 <div class="col-9">
+                     <input id='adminUsername' name="date" type="date" class="form-control" placeholder="" required value="{{date('Y-m-d')}}">
+                     @error('date')
+                     <div class="alert alert-danger error_mes">{{ $message }}</div>
+                     @enderror
+                 </div>
             </div>
 
              <div class="input-group mb-3">

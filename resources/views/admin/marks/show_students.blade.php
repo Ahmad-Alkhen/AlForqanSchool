@@ -1,4 +1,5 @@
 @isset($students)
+
     @foreach($students as $student)
         <tr class="tbody_marks" data-id="{{$student->user->id}}">
             <th scope="row">{{$student->user->id}}</th>
@@ -41,15 +42,16 @@
             </td>
         </tr>
     @endforeach
-    <tr class="tbody_marks">
-        <th></th>
-        <td></td>
-        <td><button id="set_marks_recite1" class="btn btn-success">تحديث</button></td>
-        <td><button id="set_marks_activity1" class="btn btn-success">تحديث</button></td>
-        <td><button id="set_marks_recite2" class="btn btn-success">تحديث</button></td>
-        <td><button id="set_marks_activity2" class="btn btn-success">تحديث</button></td>
-
-    </tr>
+    @if(count($students))
+        <tr class="tbody_marks">
+            <th></th>
+            <td></td>
+            <td><button id="set_marks_recite1" class="btn btn-success">تحديث</button></td>
+            <td><button id="set_marks_activity1" class="btn btn-success">تحديث</button></td>
+            <td><button id="set_marks_recite2" class="btn btn-success">تحديث</button></td>
+            <td><button id="set_marks_activity2" class="btn btn-success">تحديث</button></td>
+        </tr>
+    @endif
 @endisset
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

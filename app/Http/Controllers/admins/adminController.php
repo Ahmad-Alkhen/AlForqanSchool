@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\adminRequest;
 use App\Models\admins\Admin;
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isEmpty;
 
 class adminController extends Controller
 {
@@ -28,17 +29,23 @@ class adminController extends Controller
             }else
                 $active = $request->active;
 
-               Admin::create([
-                   'name'=>$request->name,
-                   'user_name'=>$request->user_name,
-                   'password'=>bcrypt($request->password),
-                   'phone'=>$request->phone,
-                   'address'=>$request->address,
-                   'active'=>$active,
-               ]);
-                toast('تمت الإضافة بنجاح','success');
-              return redirect()->route('admin.index')->with(['success'=>'تمت الإضافة بنجاح']);
-
+           $admin_username= Admin::where('user_name',$request->user_name)->get();
+           if(count($admin_username) > 0){
+                toast('!!هذا الحساب موجود بالفعل','error');
+                return redirect()->route('admin.index')->with(['error'=>'!!هذا الحساب موجود بالفعل']);
+            }
+             else{
+                 Admin::create([
+                     'name'=>$request->name,
+                     'user_name'=>$request->user_name,
+                     'password'=>bcrypt($request->password),
+                     'phone'=>$request->phone,
+                     'address'=>$request->address,
+                     'active'=>$active,
+                 ]);
+                 toast('تمت الإضافة بنجاح','success');
+                 return redirect()->route('admin.index')->with(['success'=>'تمت الإضافة بنجاح']);
+             }
         }catch (\Exception $exception){
 
            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
@@ -65,6 +72,11 @@ class adminController extends Controller
                 }else
                     $active = $request->active;
 
+                $admin_username= Admin::where([['user_name',$request->user_name],['id','!=',$adminId]])->get();
+                if(count($admin_username) > 0){
+                    toast('!!هذا الحساب موجود بالفعل','error');
+                    return redirect()->route('admin.index')->with(['error'=>'!!هذا الحساب موجود بالفعل']);
+                }else{
 
                     $admin->update([
                         'name'=>$request->name,
@@ -75,11 +87,14 @@ class adminController extends Controller
                         'active'=>$active,
                     ]);
 
-                  toast('تم العديل بنجاح','success');
-                return redirect()->route('admin.index')->with(['success'=>'تم العديل بنجاح']);
+                    toast('تم العديل بنجاح','success');
+                    return redirect()->route('admin.index')->with(['success'=>'تم العديل بنجاح']);
+                }
+
             }
         }catch (\Exception $exception){
-            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+           // toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return $exception;
         }
     }
 

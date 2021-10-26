@@ -32,7 +32,7 @@
                         <td>{{$user->birthday}}</td>
                         <td>{{$user->active==1? 'نشط' :'غير نشط'}}</td>
                         <td>
-                            <a href="{{route('admin.user.delete',$user->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
+                            <a onclick="return confirm('هل تريد تأكيد الحذف؟')" href="{{route('admin.user.delete',$user->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
                             <a href="{{route('admin.user.edit',$user->id)}}" title="تعديل"> <i class="feather icon-edit"></i></a>
                         </td>
 

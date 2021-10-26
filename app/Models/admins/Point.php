@@ -3,16 +3,11 @@
 namespace App\Models\admins;
 
 use App\Models\User;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
-use PhpParser\Builder\Class_;
+use Illuminate\Database\Eloquent\Model;
 
-class Point extends Authenticatable
+
+class Point extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
     public $timestamps = false;
 

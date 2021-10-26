@@ -9,7 +9,7 @@
 
 
                 </div>
-                <span class="b-title"> الفرقان</span>
+                <span class="b-title">  الفرقان</span>
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
         </div>
@@ -89,6 +89,7 @@
                 <li class="nav-item pcoded-hasmenu">
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-book"></i></span><span class="pcoded-mtext">المواد والعلامات</span></a>
                     <ul class="pcoded-submenu">
+
                         <li class=""><a href="{{route('admin.subject.index')}}" class="">جميع المواد</a></li>
 
                         <li class=""><a href="{{route('admin.mark.index')}}" class="">العلامات</a></li>
@@ -97,9 +98,11 @@
                 <li class="nav-item pcoded-hasmenu nav-additional">
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-info-circle"></i></span><span class="pcoded-mtext">الإصدار 1.0</span></a>
                 </li>
+                <!--
                 <li class="nav-item pcoded-hasmenu nav-additional">
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-copyright"></i></span><span class="pcoded-mtext">Ahmad Alkhen</span></a>
                 </li>
+                -->
                 <li class="nav-item pcoded-hasmenu nav-additional">
                     <a  class="nav-link "><span class="pcoded-micon"><i class="fa fa-envelope"></i></span><span class="pcoded-mtext">ahmad.alkhen.sy@gmail.com</span></a>
                 </li>

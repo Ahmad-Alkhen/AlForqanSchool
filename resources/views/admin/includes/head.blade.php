@@ -35,10 +35,11 @@
     <!-- animation css -->
     <link rel="stylesheet" href="{{asset('assets/plugins/animation/css/animate.min.css')}}">
     <!-- vendor css -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/newstyle.css')}}">
+
 
 
     <link rel="stylesheet" href="{{asset('assets/css/select2.min.css')}}">
 
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/newstyle.css')}}">
 </head>

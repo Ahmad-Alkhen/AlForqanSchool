@@ -12,9 +12,9 @@
 
 <script>
     function click_btn_delete(id){
-        //WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
-       // var checked = confirm(WRN_PROFILE_DELETE);
-        //if(checked == true) {
+        WRN_PROFILE_DELETE = "هل تريد تأكيد الحذف؟ ";
+        var checked = confirm(WRN_PROFILE_DELETE);
+        if(checked == true) {
 
             $.ajax({
                 type: "POST",
@@ -28,7 +28,7 @@
                     $("#regStd"+id).remove();
                 }
             });
-       // }
+        }
     }
 
 

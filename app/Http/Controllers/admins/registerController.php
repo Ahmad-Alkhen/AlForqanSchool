@@ -14,11 +14,19 @@ class registerController extends Controller
 
     public function index(){
 
-     $registers= Register::where('admin_id',Auth::id())-> get();
+        if (Auth::user()->permission =='1'){
+            $registers= Register::with(['admin'=>function($q){$q->select('id','name');}])->get();
+        }
+        else
+             $registers= Register::where('admin_id',Auth::id())-> get();
         return view('admin.registers.index',compact('registers'));
     }
 
     public function create(){
+        if (Auth::user()->permission =='1'){
+            $admins= Admin::select('id','name')->get();
+            return view('admin.registers.create',compact('admins'));
+        }else
         return view('admin.registers.create');
     }
 
@@ -30,10 +38,16 @@ class registerController extends Controller
             }else
                 $active = $request->active;
 
-               Register::create([
+            if ($request->has('admin_id')){
+                $admin_id= $request->admin_id ;
+            }else
+                $admin_id = Auth::id();
+
+
+            Register::create([
                    'name'=>$request->name,
                    'date'=>$request->date,
-                   'admin_id'=>Auth::id(),
+                   'admin_id'=>$admin_id,
                    'active'=>$active,
                ]);
                 toast('تمت الإضافة بنجاح','success');
@@ -50,7 +64,11 @@ class registerController extends Controller
         if(!$register)
             return redirect()->route('admin.register.index')->with(['error' =>'السجل غير موجود' ]);
         else
-        return view('admin.registers.edit',compact('register'));
+            if (Auth::user()->permission =='1'){
+                $admins= Admin::select('id','name')->get();
+                return view('admin.registers.edit',compact('admins','register'));
+            }else
+              return view('admin.registers.edit',compact('register'));
     }
 
     public function update(registerRequest $request,$registerId){
@@ -65,10 +83,15 @@ class registerController extends Controller
                 }else
                     $active = $request->active;
 
+                if ($request->has('admin_id')){
+                    $admin_id= $request->admin_id ;
+                }else
+                    $admin_id = Auth::id();
+
                 $register->update([
                     'name'=>$request->name,
                     'date'=>$request->date,
-                    'admin_id'=>Auth::id(),
+                    'admin_id'=>$admin_id,
                     'active'=>$active,
                 ]);
                   toast('تمت التعديل بنجاح','success');

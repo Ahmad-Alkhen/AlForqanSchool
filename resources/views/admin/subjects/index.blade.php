@@ -34,7 +34,10 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">المادة</th>
+
+                @if(Auth::user()->permission=='1')
                 <th scope="col">النشاط</th>
+                @endif
             </tr>
             </thead>
             <tbody>
@@ -43,9 +46,12 @@
                     <tr id="{{'subject_rec'.$subject->id}}">
                         <th scope="row">{{$subject->id}}</th>
                         <td>{{$subject->name}}</td>
+
+                        @if(Auth::user()->permission=='1')
                         <td>
                             <a class="btn" onclick="click_btn_delete({{$subject->id}})" title="حذف"  > <i class="feather icon-x-circle"></i></a>
                         </td>
+                        @endif
                     </tr>
                 @endforeach
             @endisset
@@ -82,9 +88,9 @@
     <script>
 
         function click_btn_delete(id){
-            //WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
-            // var checked = confirm(WRN_PROFILE_DELETE);
-            //if(checked == true) {
+            WRN_PROFILE_DELETE = "هل تريد تأكيد حذف المادة؟";
+             var checked = confirm(WRN_PROFILE_DELETE);
+            if(checked == true) {
 
             $.ajax({
                 type: "post",
@@ -98,7 +104,7 @@
                     $("#subject_rec"+id).remove();
                 }
             });
-            // }
+             }
         }
 
     </script>

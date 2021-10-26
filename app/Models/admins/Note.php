@@ -20,11 +20,15 @@ class Note extends Authenticatable
         'user_id',
         'note',
         'date',
+        'active',
 
     ];
 
     public function user(){
         return $this->belongsTo(User::Class,'user_id');
+    }
+    public function admin(){
+        return $this->belongsTo(Admin::Class,'admin_id');
     }
 
 }

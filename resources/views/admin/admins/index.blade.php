@@ -30,7 +30,7 @@
                         <td>{{$admin->phone}}</td>
                         <td>{{$admin->active==1? 'نشط' :'غير نشط'}}</td>
                         <td>
-                            <a href="{{route('admin.delete',$admin->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
+                            <a onclick="return confirm('هل تريد تأكيد الحذف؟')" href="{{route('admin.delete',$admin->id)}}" title="حذف" > <i class="feather icon-x-circle"></i></a>
                             <a href="{{route('admin.edit',$admin->id)}}" title="تعديل" > <i class="feather icon-edit"></i></a>
                         </td>
                     </tr>

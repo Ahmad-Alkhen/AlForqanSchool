@@ -20,9 +20,14 @@ class markController extends Controller
 
     public function index(){
 
+        if (Auth::user()->permission =='1'){
+            $registers=Register::where('active','1')->get();
 
-     $registers=Register::where('active','1')->where('admin_id',Auth::id())->get();
-     $subjects=Subject::get();
+        }else
+            $registers=Register::where('active','1')->where('admin_id',Auth::id())->get();
+
+
+        $subjects=Subject::get();
 
         return view('admin.marks.index',compact('registers','subjects'));
     }

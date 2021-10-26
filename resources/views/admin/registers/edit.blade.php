@@ -18,6 +18,29 @@
                     <div class="alert alert-danger error_mes">{{ $message }}</div>
                     @enderror
                 </div>
+
+                @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
+                    <div class="row input-group mb-3">
+                        <div class="col-3">
+                            <label for="adminName" class=" col-form-label">اسم المشرف</label>
+                        </div>
+                        <div class="col-9">
+                            <select id="adminName" name="admin_id" class=" select2 form-control" required>
+                                <option value="" disabled selected> اختر المشرف  </option>
+                                @isset($admins)
+                                    @foreach($admins as $admin)
+                                        <option value="{{$admin->id}}" {{$admin->id==$register->admin_id?'selected':''}}>{{$admin->name}} </option>
+                                    @endforeach
+                                @endisset
+                            </select>
+                            @error('admin_id')
+                            <div class="alert alert-danger error_mes">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                @endif
+
+
                 <div class="input-group mb-3">
                     <label for="adminUsername" class="col-sm-2 col-form-label">التاريخ</label>
                     <input id='adminUsername' name="date" type="date" class="form-control" placeholder="" value="{{$register->date}}" required >
@@ -25,7 +48,6 @@
                     <div class="alert alert-danger error_mes">{{ $message }}</div>
                     @enderror
                 </div>
-
                 <div class="input-group mb-3">
                     <div class="form-group mt-2 adminActive">
                         <input type="checkbox" name="active"

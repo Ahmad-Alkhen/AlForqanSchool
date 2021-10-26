@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\userRequest;
+use App\Models\admins\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -27,21 +29,36 @@ class userController extends Controller
             }else
                 $active = $request->active;
 
-               User::create([
-                   'name'=>$request->name,
-                   'user_name'=>$request->user_name,
-                   'password'=>bcrypt($request->password),
-                   'phone'=>$request->phone,
-                   'address'=>$request->address,
-                   'birthday'=>$request->birthday,
-                   'active'=>$active,
-               ]);
+            $user_username= User::where('user_name',$request->user_name)->get();
+            if(count($user_username) > 0){
+                toast('!!هذا الحساب موجود بالفعل','error');
+                return redirect()->route('admin.user.index')->with(['error'=>'!!هذا الحساب موجود بالفعل']);
+            }
+            else{
+                User::create([
+                    'name'=>$request->name,
+                    'user_name'=>$request->user_name,
+                    'password'=>bcrypt($request->password),
+                    'phone'=>$request->phone,
+                    'address'=>$request->address,
+                    'birthday'=>$request->birthday,
+                    'active'=>$active,
+                ]);
                 toast('تمت الإضافة بنجاح','success');
-              return redirect()->route('admin.user.index')->with(['success'=>'تمت الإضافة بنجاح']);
+
+                Notification::create([
+                    'admin_id'=>Auth::id(),
+                    'event'=> ' تم إضافة الطالب '  .  $request->name .   ' من قبل المشرف  '  .  Auth::user()->name  ,
+                    'date'=>now(),
+                ]);
+
+
+                return redirect()->route('admin.user.index')->with(['success'=>'تمت الإضافة بنجاح']);
+            }
 
         }catch (\Exception $exception){
-            return $exception;
-       //     toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            //   return $exception;
+            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
         }
     }
 
@@ -65,7 +82,12 @@ class userController extends Controller
                 }else
                     $active = $request->active;
 
-                $user->update([
+                $user_username= User::where([['user_name',$request->user_name],['id','!=',$userId]])->get();
+                if(count($user_username) > 0){
+                    toast('!!هذا الحساب موجود بالفعل','error');
+                    return redirect()->route('admin.user.index')->with(['error'=>'!!هذا الحساب موجود بالفعل']);
+                }else{
+                    $user->update([
                         'name'=>$request->name,
                         'user_name'=>$request->user_name,
                         'password'=>bcrypt($request->password),
@@ -73,9 +95,17 @@ class userController extends Controller
                         'address'=>$request->address,
                         'birthday'=>$request->birthday,
                         'active'=>$active,
-                ]);
-                  toast('تم التعديل بنجاح','success');
-                return redirect()->route('admin.user.index')->with(['success'=>'تم التعديل بنجاح']);
+                    ]);
+                    toast('تم التعديل بنجاح','success');
+
+                    Notification::create([
+                        'admin_id'=>Auth::id(),
+                        'event'=> ' تمت تعديل معلومات الطالب '  .  $request->name .   ' من قبل المشرف  '  .  Auth::user()->name  ,
+                        'date'=>now(),
+                    ]);
+
+                    return redirect()->route('admin.user.index')->with(['success'=>'تم التعديل بنجاح']);
+                }
             }
         }catch (\Exception $exception){
             toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
@@ -93,6 +123,13 @@ class userController extends Controller
 
         $user->delete();
              toast('تم الحذف بنجاح','success');
+
+        Notification::create([
+            'admin_id'=>Auth::id(),
+            'event'=> ' تم حذف الطالب '  .  $user->name .   ' من قبل المشرف  '  .  Auth::user()->name  ,
+            'date'=>now(),
+        ]);
+
           return redirect()->route('admin.user.index')->with(['success' =>'تم الحذف بنجاح' ]);
     }
 

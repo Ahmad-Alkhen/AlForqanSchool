@@ -23,7 +23,7 @@ class Authenticate extends Middleware
                 return route('teacher.getLogin');
             }*/
             else{
-                return route('site.welcome');
+                return route('site.getLogin');
             }
         }
     }

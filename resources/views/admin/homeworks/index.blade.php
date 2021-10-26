@@ -22,7 +22,7 @@
                 @foreach($homeworks as $homework)
                     <tr id="{{'homework_rec'.$homework->id}}">
                         <th scope="row">{{$homework->id}}</th>
-                        <td>{{$homework->register->name}}</td>
+                        <td>@isset($homework->register->name){{$homework->register->name}}@endisset</td>
                         <td class="info">{{$homework->info}}</td>
                         <td>{{$homework->date}}</td>
                         <td>
@@ -39,9 +39,9 @@
 
     <script>
         function click_btn_delete(id){
-            //WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
-            // var checked = confirm(WRN_PROFILE_DELETE);
-            //if(checked == true) {
+            WRN_PROFILE_DELETE = "هل تريد تأكيد حذف العنصر";
+             var checked = confirm(WRN_PROFILE_DELETE);
+            if(checked == true) {
 
             $.ajax({
                 type: "POST",
@@ -55,7 +55,7 @@
                     $("#homework_rec"+id).remove();
                 }
             });
-            // }
+             }
         }
     </script>
 

@@ -15,8 +15,12 @@ class noteController extends Controller
 {
 
     public function index(){
+        if (Auth::user()->permission =='1'){
+            $notes= Note::with(['user'=>function($q){$q->select('id','name');},'admin'=>function($q){$q->select('id','name');}])-> get();
 
-     $notes= Note::where('admin_id',Auth::id())->with(['user'=>function($q){$q->select('id','name');}])-> get();
+        }else
+            $notes= Note::where('admin_id',Auth::id())->with(['user'=>function($q){$q->select('id','name');}])-> get();
+
         return view('admin.notes.index',compact('notes'));
     }
 
@@ -63,6 +67,7 @@ class noteController extends Controller
 
                 $note->update([
                     'user_id'=>$request->user_id,
+                    'admin_id'=>Auth::id(),
                     'note'=>$request->note,
                     'date'=>now(),
                 ]);
@@ -88,4 +93,25 @@ class noteController extends Controller
           return redirect()->route('admin.note.index')->with(['success' =>'تم الحذف بنجاح' ]);
     }
 
+
+    public function active(Request $request){
+        $note =Note::find($request->id);
+        if(!$note)
+            return redirect()->route('admin.note.index');
+        else{
+            if ($note->active=='0'){
+                $note->update([
+                    'active'=>'1',
+                ]);
+                return '1' ;
+            }else{
+                $note->update([
+                    'active'=>'0',
+                ]);
+                return '0' ;
+            }
+        }
+
+
+    }
 }

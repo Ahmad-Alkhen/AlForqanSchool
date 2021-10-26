@@ -16,12 +16,23 @@ class registerStdController extends Controller
 
     public function index(){
 
-     $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
-        return view('admin.registerStds.index',compact('registers'));
+        if (Auth::user()->permission =='1'){
+            $registers= Register::where('active','1')-> get();
+            return view('admin.registerStds.index',compact('registers'));
+        }else
+        {
+            $registers= Register::where('admin_id',Auth::id())->where('active','1')-> get();
+            return view('admin.registerStds.index',compact('registers'));
+        }
     }
 
     public function create(){
+
+        if (Auth::user()->permission =='1'){
+            $registers = Register::where('active','1')->get();
+        }else
         $registers = Register::where('admin_id',Auth::id())->where('active','1')->get();
+
         $users = User::where('active','1')->get();
 
         return view('admin.registerStds.create',compact('registers','users'));
@@ -31,11 +42,7 @@ class registerStdController extends Controller
 
       try {
 
-   /*       $users_id =  implode(',',$request->user_id);
-          Registerstds::create([
-                   'register_id'=>$request->register_id,
-                   'user_id'=>$users_id,
-               ]);*/
+
           $users_ids = $request->user_id;
           for($i=0 ; $i < count($users_ids); $i++){
               Registerstds::create([

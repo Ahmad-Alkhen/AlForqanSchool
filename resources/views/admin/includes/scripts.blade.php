@@ -24,8 +24,8 @@
 
 
 <script>
-    $("#select-booking").select2( {
-        placeholder: "Select The Booking",
+    $("#select-student").select2( {
+        placeholder: "اختر الطالب",
         allowClear: true
     } );
 
@@ -38,6 +38,7 @@
        $('#students-table').DataTable();
        $('#points-table').DataTable();
        $('#homework-table').DataTable();
+       $('#notes-table').DataTable();
 
    } );
 </script>
@@ -64,3 +65,31 @@
 </script>
 
 
+<script>
+    // change active state in notes page
+    $(document).ready(function() {
+        $('.note_active').click(function() {
+
+            var id =$(this).data('id');
+
+            //alert(id)
+            $.ajax({
+                type: "POST",
+                url: "{{route('admin.note.active')}}",
+                data: {
+                    '_token': "{{csrf_token()}}",
+                    'id':id
+                },
+                success: function(response) {
+
+                    if (response == '1')
+                        $('#tdActive'+id).html('مفعلة');
+                    else
+                        $('#tdActive'+id).html('غير مفعلة');
+
+                }
+            });
+
+        });
+    });
+</script>

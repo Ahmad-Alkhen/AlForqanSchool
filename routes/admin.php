@@ -113,7 +113,15 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
         Route::post('store','noteController@store')->name('admin.note.store');
         Route::get('edit/{id}','noteController@edit')->name('admin.note.edit');
         Route::post('update/{id}','noteController@update')->name('admin.note.update');
+        Route::post('active','noteController@active')->name('admin.note.active');
         Route::get('delete/{id}','noteController@delete')->name('admin.note.delete');
+    });
+
+    /*---------------------- Notes Route --------------------*/
+    Route::group(['prefix'=>'notifications'],function(){
+
+        Route::get('asread','notificationController@asread')->name('admin.notification.asread')->middleware('checkPermission');
+
     });
 
 });
