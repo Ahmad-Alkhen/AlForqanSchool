@@ -4,12 +4,11 @@
             <a href="{{route('admin.dash')}}" class="b-brand">
                 <div class="b-bg">
 
-               <!--     <i class="feather icon-trending-up"></i> -->
-                    <i><img src="{{asset('assets/images/logo.png')}}"></i>
-
+               <!--    <i><img src="{{asset('assets/images/logo.png')}}"></i> -->
+                    <i class="fa fa-university"></i>
 
                 </div>
-                <span class="b-title">  الفرقان</span>
+                <span class="b-title">  ثانوية الفرقان</span>
             </a>
             <a class="mobile-menu" id="mobile-collapse" href="javascript:"><span></span></a>
         </div>
@@ -19,7 +18,7 @@
                     <label>التحكم</label>
                 </li>
                 <li data-username="dashboard Default Ecommerce CRM Analytics Crypto Project" class="nav-item active">
-                    <a href="{{route('admin.dash')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">صفحة التحكم</span></a>
+                    <a href="{{route('admin.dash')}}" class="nav-link "><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">الصفحة الرئيسية</span></a>
                 </li>
                 <li class="nav-item pcoded-menu-caption">
                     <label>معلومات</label>
@@ -44,26 +43,26 @@
                     </ul>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-list"></i></span><span class="pcoded-mtext">السجلات</span></a>
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-list"></i></span><span class="pcoded-mtext">الصفوف</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.register.index')}}" class="">جميع السجلات</a></li>
+                        <li class=""><a href="{{route('admin.register.index')}}" class="">جميع الصفوف</a></li>
 
-                        <li class=""><a href="{{route('admin.register.create')}}" class="">إضافة سجل</a></li>
+                        <li class=""><a href="{{route('admin.register.create')}}" class="">إضافة صف</a></li>
                     </ul>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
-                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-list-alt"></i></span><span class="pcoded-mtext">الطلاب في السجلات</span></a>
+                    <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-list-alt"></i></span><span class="pcoded-mtext">الطلاب في الصفوف</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.registerStd.index')}}" class="">جميع سجلات الطلاب</a></li>
+                        <li class=""><a href="{{route('admin.registerStd.index')}}" class="">جميع صفوف الطلاب</a></li>
 
-                        <li class=""><a href="{{route('admin.registerStd.create')}}" class="">إضافة طلاب إلى السجل</a></li>
+                        <li class=""><a href="{{route('admin.registerStd.create')}}" class="">إضافة طلاب إلى الصف</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item pcoded-hasmenu">
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-star"></i></span><span class="pcoded-mtext">النقاط</span></a>
                     <ul class="pcoded-submenu">
-                        <li class=""><a href="{{route('admin.point.index')}}" class="">رصيد النقاط</a></li>
+                        <li class=""><a href="{{route('admin.point.index')}}" class="">جميع النقاط</a></li>
 
                         <li class=""><a href="{{route('admin.point.create')}}" class="">إضافة نقاط للطالب</a></li>
                     </ul>
@@ -95,6 +94,11 @@
                         <li class=""><a href="{{route('admin.mark.index')}}" class="">العلامات</a></li>
                     </ul>
                 </li>
+                @if(Auth::user()->permission=='1')
+                    <li class="nav-item pcoded-hasmenu nav-additional">
+                        <a href="{{route('admin.message.index')}}" class="nav-link "><span class="pcoded-micon"><i class="fa fa-envelope-open"></i></span><span class="pcoded-mtext">الرسائل</span></a>
+                    </li>
+                @endif
                 <li class="nav-item pcoded-hasmenu nav-additional">
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-info-circle"></i></span><span class="pcoded-mtext">الإصدار 1.0</span></a>
                 </li>

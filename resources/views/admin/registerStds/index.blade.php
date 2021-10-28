@@ -1,16 +1,16 @@
 @extends('admin.template')
-@section('title','السجلات')
+@section('title','الصفوف')
 
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}"> السجلات</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}"> الصفوف</a></li>
 @endsection
 
 @section('content-template')
     <div class="card">
         <div class="input-group mb-3">
-            <label for="adminName" class="col-sm-2 col-form-label">اسم السجل</label>
+            <label for="adminName" class="col-sm-2 col-form-label">اسم الصف</label>
             <select id='select_register' onchange="select_register()" name="register_id" class="select2 form-control" required>
-                <option value="" disabled selected> اختر السجل المناسب </option>
+                <option value="" disabled selected> اختر الصف المناسب </option>
                 @isset($registers)
                     @foreach($registers as $register)
                         <option value="{{$register->id}}">{{$register->name}} </option>

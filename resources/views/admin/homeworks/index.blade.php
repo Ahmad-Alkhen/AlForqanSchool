@@ -11,7 +11,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">السجل</th>
+                <th scope="col">الصف</th>
                 <th scope="col">تفاصيل الواجب</th>
                 <th scope="col">التاريخ</th>
                 <th scope="col">النشاط</th>

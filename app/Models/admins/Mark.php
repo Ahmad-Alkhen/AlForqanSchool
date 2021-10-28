@@ -30,4 +30,8 @@ class Mark extends Model
             return $this->belongsTo(Register::Class,'register_id');
         }
 
+    public function subject(){
+        return $this->belongsTo(Subject::Class,'subject_id');
+    }
+
 }

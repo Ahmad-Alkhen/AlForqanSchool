@@ -31,11 +31,11 @@
              </div>
              <div class="input-group mb-3">
                     <div class="col-3">
-                        <label for="register_id" class=" col-form-label">السجل</label>
+                        <label for="register_id" class=" col-form-label">الصف</label>
                     </div>
                     <div class="col-9">
                         <select id="register_id" name="register_id" class="select2 form-control" required>
-                            <option value="" disabled selected> اختر اسم السجل </option>
+                            <option value="" disabled selected> اختر اسم الصف </option>
                             @isset($registers)
                                 @foreach($registers as $register)
                                     <option value="{{$register->id}}">{{$register->name}} </option>

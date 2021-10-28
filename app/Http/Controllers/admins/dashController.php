@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\admins\Admin;
+use App\Models\admins\Message;
 use App\Models\admins\Notification;
 use App\Models\admins\Subject;
 use App\Models\User;
@@ -17,7 +18,8 @@ class dashController extends Controller
         $users=User::where('active','1')->count();
         $subjects=Subject::count();
         $notes=Subject::count();
+        $messages=Message::count();
 
-       return view('admin.dash',compact('admins','users','subjects','notes'));
+       return view('admin.dash',compact('admins','users','subjects','notes','messages'));
     }
 }

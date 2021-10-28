@@ -5,7 +5,7 @@
             <div class="b-bg">
                 <i class="fa fa-university"></i>
             </div>
-            <span class="b-title"> الفرقان </span>
+            <span class="b-title"> ثانوية الفرقان </span>
         </a>
     </div>
     <a class="mobile-menu" id="mobile-header" href="javascript:">

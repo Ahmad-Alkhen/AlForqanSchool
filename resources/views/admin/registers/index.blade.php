@@ -1,8 +1,8 @@
 @extends('admin.template')
-@section('title','السجلات')
+@section('title','الصفوف')
 
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}"> السجلات</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}"> الصفوف</a></li>
 @endsection
 
 @section('content-template')
@@ -12,7 +12,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">السجل</th>
+                <th scope="col">الصف</th>
                 <th scope="col">المشرف</th>
                 <th scope="col">التاريخ</th>
                 <th scope="col">الحالة</th>
@@ -45,7 +45,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">السجل</th>
+                <th scope="col">الصف</th>
                 <th scope="col">التاريخ</th>
                 <th scope="col">الحالة</th>
                 <th scope="col">النشاط</th>

@@ -1,8 +1,8 @@
 @extends('admin.template')
-@section('title','إضافة طلاب للسجل')
+@section('title','إضافة طلاب إلى الصف')
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  الطلاب في السجلات  </a></li>
-    <li class="breadcrumb-item"><a href="{{route('admin.register.create')}}"> إضافة طلاب للسجل</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  الطلاب في الصفوف  </a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.create')}}"> إضافة طلاب إلى الصف</a></li>
 @endsection
 
 @section('content-template')
@@ -13,11 +13,11 @@
 
             <div class=" input-group mb-3">
                 <div class="col-3">
-                    <label for="adminName" class=" col-form-label">اسم السجل</label>
+                    <label for="adminName" class=" col-form-label">اسم الصف</label>
                 </div>
                 <div class="col-9">
                     <select name="register_id" class=" select2 form-control" required>
-                        <option value="" disabled selected> اختر السجل المناسب </option>
+                        <option value="" disabled selected> اختر الصف المناسب </option>
                             @isset($registers)
                                 @foreach($registers as $register)
                                     <option value="{{$register->id}}">{{$register->name}} </option>

@@ -39,6 +39,7 @@
        $('#points-table').DataTable();
        $('#homework-table').DataTable();
        $('#notes-table').DataTable();
+       $('#message-table').DataTable();
 
    } );
 </script>
@@ -54,6 +55,12 @@
         });
     });
 
+    //show message after click inside table messages
+    $(document).ready(function() {
+        $('.message').click(function() {
+            alert( $(this).text() );
+        });
+    });
 
  /*   $('#customers-table').dataTable( {
         "language": {

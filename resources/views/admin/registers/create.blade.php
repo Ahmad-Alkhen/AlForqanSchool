@@ -1,8 +1,8 @@
 @extends('admin.template')
-@section('title','إضافة سجل')
+@section('title','إضافة صف')
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  السجلات  </a></li>
-    <li class="breadcrumb-item"><a href="{{route('admin.register.create')}}"> إضافة سجل</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  الصفوف  </a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.create')}}"> إضافة صف</a></li>
 @endsection
 
 @section('content-template')
@@ -13,7 +13,7 @@
 
             <div class="input-group mb-3">
                 <div class="col-3">
-                    <label for="adminName" class=" col-form-label">اسم السجل</label>
+                    <label for="adminName" class=" col-form-label">اسم الصف</label>
                 </div>
                 <div class="col-9">
                     <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى 2020" required>

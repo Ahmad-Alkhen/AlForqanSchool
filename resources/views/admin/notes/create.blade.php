@@ -34,7 +34,7 @@
                      <label for="note_text" class=" col-form-label">الملاحظة</label>
                  </div>
                  <div class="col-9">
-                     <textarea id='note_text' name="note" type="text" class="form-control" placeholder="الملاحظة" required></textarea>
+                     <textarea id='note_text' name="note" type="text" rows="8" class="form-control" placeholder="الملاحظة" required></textarea>
                      @error('note')
                      <div class="alert alert-danger error_mes">{{ $message }}</div>
                      @enderror

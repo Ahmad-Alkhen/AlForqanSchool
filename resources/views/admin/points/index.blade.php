@@ -12,7 +12,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">اسم الطالب</th>
-                <th scope="col">السجل</th>
+                <th scope="col">الصف</th>
                 <th scope="col">النقاط</th>
                 <th scope="col">معلومات إضافية</th>
                 <th scope="col">التاريخ</th>

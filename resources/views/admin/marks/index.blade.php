@@ -9,9 +9,9 @@
     <div class="card">
 
         <div class="input-group mb-3">
-            <label for="select_register_id" class="col-sm-2 col-form-label">اسم السجل</label>
+            <label for="select_register_id" class="col-sm-2 col-form-label">اسم الصف</label>
             <select onchange="get_students()" id="select_register_id" name="register_id" class="select2 form-control" required>
-                <option value="" disabled selected> اختر السجل  </option>
+                <option value="" disabled selected> اختر الصف  </option>
                 @isset($registers)
                     @foreach($registers as $register)
                         <option value="{{$register->id}}">{{$register->name}} </option>

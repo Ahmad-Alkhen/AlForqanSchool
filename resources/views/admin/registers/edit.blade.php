@@ -1,8 +1,8 @@
 @extends('admin.template')
-@section('title','تعديل معلومات السجل')
+@section('title','تعديل معلومات الصف')
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  السجلات  </a></li>
-    <li class="breadcrumb-item"><a > تعديل معلومات السجل</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  الصفوف  </a></li>
+    <li class="breadcrumb-item"><a > تعديل معلومات الصف</a></li>
 @endsection
 
 @section('content-template')
@@ -12,15 +12,19 @@
                 @csrf
 
                 <div class="input-group mb-3">
-                    <label for="adminName" class="col-sm-2 col-form-label">اسم السجل</label>
-                    <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى" value="{{$register->name}}" required>
-                    @error('name')
-                    <div class="alert alert-danger error_mes">{{ $message }}</div>
-                    @enderror
+                    <div class="col-3">
+                        <label for="adminName" class="col-form-label">اسم الصف</label>
+                    </div>
+                    <div class="col-9">
+                        <input id='adminName' name="name" type="text" class="form-control" placeholder="مثال : سابع أولى" value="{{$register->name}}" required>
+                        @error('name')
+                        <div class="alert alert-danger error_mes">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
 
                 @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
-                    <div class="row input-group mb-3">
+                    <div class=" input-group mb-3">
                         <div class="col-3">
                             <label for="adminName" class=" col-form-label">اسم المشرف</label>
                         </div>
@@ -42,11 +46,15 @@
 
 
                 <div class="input-group mb-3">
-                    <label for="adminUsername" class="col-sm-2 col-form-label">التاريخ</label>
-                    <input id='adminUsername' name="date" type="date" class="form-control" placeholder="" value="{{$register->date}}" required >
-                    @error('date')
-                    <div class="alert alert-danger error_mes">{{ $message }}</div>
-                    @enderror
+                    <div class="col-3">
+                        <label for="adminUsername" class=" col-form-label">التاريخ</label>
+                    </div>
+                    <div class="col-9">
+                        <input id='adminUsername' name="date" type="date" class="form-control" placeholder="" value="{{$register->date}}" required >
+                        @error('date')
+                        <div class="alert alert-danger error_mes">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="input-group mb-3">
                     <div class="form-group mt-2 adminActive">

@@ -124,4 +124,11 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
 
     });
 
+    /*---------------------- Messages Route --------------------*/
+    Route::group(['prefix'=>'messages'],function(){
+
+        Route::get('/','messageController@index')->name('admin.message.index')->middleware('checkPermission');
+
+    });
+
 });
