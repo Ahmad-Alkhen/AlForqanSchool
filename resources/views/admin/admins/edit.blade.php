@@ -59,7 +59,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary shadow-2 mb-4">  <span class="feather icon-edit auth-icon"></span> حفظ </button>
+                <button class="btn btn-primary shadow-2 mb-4">  <span class="feather icon-edit auth-icon"></span> تعديل  </button>
 
             </form>
 

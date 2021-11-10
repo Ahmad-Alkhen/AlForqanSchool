@@ -22,5 +22,8 @@ class Homework extends Model
     public function register(){
         return $this->belongsTo(Register::class,'register_id');
     }
+    public function admin(){
+        return $this->belongsTo(Admin::class,'admin_id');
+    }
 
 }

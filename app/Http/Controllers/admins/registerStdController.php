@@ -42,7 +42,6 @@ class registerStdController extends Controller
 
       try {
 
-
           $users_ids = $request->user_id;
           for($i=0 ; $i < count($users_ids); $i++){
               Registerstds::create([
@@ -54,8 +53,9 @@ class registerStdController extends Controller
               return redirect()->route('admin.registerStd.create')->with(['success'=>'تمت الإضافة بنجاح']);
 
         }catch (\Exception $exception){
-            return $exception ;
-          // toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            //return $exception ;
+           toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+          return redirect()->route('admin.registerStd.create');
         }
     }
 

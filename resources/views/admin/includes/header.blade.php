@@ -3,7 +3,7 @@
         <a class="mobile-menu" id="mobile-collapse1" href="javascript:"><span></span></a>
         <a href="{{route('admin.dash')}}" class="b-brand">
             <div class="b-bg">
-                <i class="fa fa-university"></i>
+                <i class="fa fa-universal-access"></i>
             </div>
             <span class="b-title"> ثانوية الفرقان </span>
         </a>
@@ -41,7 +41,7 @@
                             <h6 class="d-inline-block m-b-0">الإشعارات </h6>
                             <div class="float-right">
                                 <a href="{{route('admin.notification.asread')}}" class="m-r-10">مقروءة</a>
-                                <a href="javascript:">مسح الكل</a>
+                                <a class="m-r-10" href="javascript:">مسح الكل</a>
                             </div>
                         </div>
                         <ul class="noti-body">
@@ -75,16 +75,16 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-notification">
                         <div class="pro-head">
-                            <img src="{{asset('assets/images/user/avatar-1.jpg')}}" class="img-radius" alt="User-Profile-Image">
+                            <img src="{{asset('assets/images/user/avatar-2.jpg')}}" class="img-radius" alt="User-Profile-Image">
                             <span>{{Auth::user()->name }}</span>
-                            <a href="{{route('admin.logout')}}" class="dud-logout" title="Logout">
+                            <a href="{{route('admin.logout')}}" class="dud-logout" title="تسجيل خروج">
                                 <i class="feather icon-log-out"></i>
                             </a>
                         </div>
                         <ul class="pro-body">
-                            <li><a  class="dropdown-item"><i class="feather icon-settings"></i> Settings</a></li>
-                            <li><a  class="dropdown-item"><i class="feather icon-user"></i> Profile</a></li>
-                            <li><a  class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li>
+                            <li><a  class="dropdown-item"><i class="feather icon-settings"></i> الإعدادات</a></li>
+                            <li><a  class="dropdown-item"><i class="feather icon-mail"></i> رسائلي</a></li>
+                            <li><a href="{{route('admin.account.password')}}"  class="dropdown-item"><i class="fa fa-lock"></i> تعديل كلمة المرور</a></li>
                         </ul>
                     </div>
                 </div>

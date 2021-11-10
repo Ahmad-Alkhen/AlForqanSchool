@@ -17,7 +17,7 @@
                         <option value="" disabled selected> اختر الطالب  </option>
                         @isset($users)
                             @foreach($users as $user)
-                                <option value="{{$user->id}}"  {{($user->id==$note->user->id)?'selected':'' }}>{{$user->name}} </option>
+                                <option value="{{$user->id}}"  @if(isset($note->user->id)){{($user->id==$note->user->id)?'selected':'' }}@endif>{{$user->name}} </option>
                             @endforeach
                         @endisset
                     </select>

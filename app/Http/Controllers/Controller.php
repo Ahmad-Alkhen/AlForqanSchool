@@ -20,7 +20,7 @@ class Controller extends BaseController
         try {
             DB::connection()->getPdo();
         if(DB::connection()->getDatabaseName()) {
-            $notifications = Notification::where('state','1')->orderBy('id','DESC')->paginate(4);
+            $notifications = Notification::where('state','1')->orderBy('id','DESC')->get();
             View::share('notifications', $notifications);
         }
 

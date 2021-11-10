@@ -49,6 +49,7 @@ class adminController extends Controller
         }catch (\Exception $exception){
 
            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.index');
         }
     }
 
@@ -93,8 +94,10 @@ class adminController extends Controller
 
             }
         }catch (\Exception $exception){
-           // toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
-            return $exception;
+            toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.index');
+
+            // return $exception;
         }
     }
 

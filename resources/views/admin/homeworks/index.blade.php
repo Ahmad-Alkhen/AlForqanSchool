@@ -13,6 +13,9 @@
                 <th scope="col">#</th>
                 <th scope="col">الصف</th>
                 <th scope="col">تفاصيل الواجب</th>
+            @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
+                <th scope="col">المشرف</th>
+            @endif
                 <th scope="col">التاريخ</th>
                 <th scope="col">النشاط</th>
             </tr>
@@ -24,6 +27,9 @@
                         <th scope="row">{{$homework->id}}</th>
                         <td>@isset($homework->register->name){{$homework->register->name}}@endisset</td>
                         <td class="info">{{$homework->info}}</td>
+                    @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
+                         <td>@isset($homework->admin->name){{$homework->admin->name}}@endisset</td>
+                    @endif
                         <td>{{$homework->date}}</td>
                         <td>
                             <a class="btn" onclick="click_btn_delete({{$homework->id}})" title="حذف"  > <i class="feather icon-x-circle"></i></a>

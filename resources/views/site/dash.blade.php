@@ -95,7 +95,7 @@
                         </div>
                         <div class="col-lg-6">
                             <ul>
-                                <li><i class="bi bi-chevron-right"></i> <strong>العمر :&nbsp; </strong> <span>30</span></li>
+                                <li><i class="bi bi-chevron-right"></i> <strong>العمر :&nbsp; </strong> <span>{{$age.' سنة '}}</span></li>
                                 <li><i class="bi bi-chevron-right"></i> <strong> الهاتف :&nbsp;</strong> <span>{{\Illuminate\Support\Facades\Auth::user()->phone}}</span></li>
                             </ul>
                         </div>
@@ -171,24 +171,38 @@
         </div>
     </section><!-- End Skills Section -->
 
-    <!-- ======= Resume Section Homeworks ======= -->
+    <!-- ======= Resume Section ///Homeworks ======= -->
     <section id="resume" class="resume">
         <div class="container">
             <div class="section-title">
                 <h2>الواجبات المنزلية</h2>
             </div>
             <div class="row">
-                @if(count($homeworks))
-                    @foreach($homeworks as $homework)
-                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                @if(count($homeworks) || count($homeworks_files) )
+                    @isset($homeworks)
+                        @foreach($homeworks as $homework)
+                            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                                <div class="resume-item">
+                                    <h5>{{$homework->date}}</h5>
+                                    <ul>
+                                        <li>{{$homework->info}}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endisset
+                    @isset($homeworks_files)
+                         @foreach($homeworks_files as $homeworks_file)
+                        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="50">
                             <div class="resume-item">
-                                <h5>{{$homework->date}}</h5>
+                                <h5>{{$homeworks_file->date}}</h5>
                                 <ul>
-                                    <li>{{$homework->info}}</li>
+                                    <li>{{$homeworks_file->name}}<span>: &nbsp; لتحميل الملف اضغط <a href="{{route('site.homeworksFile.download',$homeworks_file->id)}}">هنا</a> </span></li>
                                 </ul>
                             </div>
                         </div>
                     @endforeach
+                    @endisset
 
                  @else
                     <h5>لا يوجد واجبات منزلية حالياً</h5>
@@ -198,7 +212,7 @@
     </section><!-- End Resume Section -->
 
 
-    <!-- ======= Services Section Marks ======= -->
+    <!-- ======= Services Section // Marks ======= -->
     <section id="services" class="services">
         <div class="container">
 
@@ -226,7 +240,7 @@
                         @if(count($marks))
                             @foreach($marks as $mark)
                                 <tr>
-                                    <td><strong>{{$mark->subject->name}}</strong></td>
+                                    <td><strong>@if(isset($mark->subject->name)){{$mark->subject->name}}@endif</strong></td>
                                     <td>{{$mark->recite1}}</td>
                                     <td>{{$mark->activity1}}</td>
                                     <td>{{$mark->recite2}}</td>

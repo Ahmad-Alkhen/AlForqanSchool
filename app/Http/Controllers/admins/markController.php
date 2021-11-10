@@ -47,8 +47,6 @@ class markController extends Controller
     }
 
 
-
-
     public function store_recite1(Request $request){
 
         $countStd=count($request->users_id);

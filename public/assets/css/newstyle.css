@@ -1,10 +1,28 @@
+@font-face {
+    font-family: ruqaa;
+    src: url('../fonts/Aref_Ruqaa/ArefRuqaa-Regular.ttf');
+}
+@font-face {
+    font-family: Scheherazade;
+    src: url('../fonts/Scheherazade/Scheherazade-Regular.ttf');
+}
+@font-face {
+    font-family: Markazi;
+    src: url('../fonts/Markazi/MarkaziText-VariableFont_wght.ttf');
+}
+
 body{
-    font-size: 16px;
+    font-family: Markazi;
+    font-size: 17px;
 }
 .btn-primary {
-    background-color: #037bb3;
-    border-color: #04a9f5;
+    background-color: #3d6d93;
+    border-color: #3D6D93;
     border-radius: 1.5em;
+}
+.btn-primary:hover {
+    background-color: #4c789f;
+
 }
 tbody tr  {
     text-align: center;
@@ -15,15 +33,36 @@ thead tr  {
 .card-body form input {
     text-align: right;
 }
+.custom-select, .form-control {
+    font-size: 19px;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.55rem + 6px );
+}
 
 .note_active{
     cursor: pointer;
 }
 
-
+/*----------------------------  -----------------------------------*/
 .pcoded-header .dropdown .notification {
     direction: rtl;
 }
+.pcoded-header .dropdown .dropdown_notification {
+    height: 300px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.pcoded-header .dropdown .dropdown_notification {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+}
+.pcoded-header .dropdown .dropdown_notification::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+}
+
 .pcoded-header .dropdown .notification .noti-body li p{
     text-align: right;
 }
@@ -94,6 +133,8 @@ display: inline;
 }
 .b-brand .b-title {
     margin-left: 30px;
+    font-family: ruqaa;
+    font-size: 24px;
 }
 
 
@@ -130,7 +171,6 @@ display: inline;
 
 .icon-edit{
 margin-right: 13px;
-color: #04cf42;
 font-size: 16px;
 }
 
@@ -211,3 +251,6 @@ font-size: 16px;
 }
 /*---------------------------------------*/
 
+.btn-glow-info .fa-download{
+    color: #007bff;
+}

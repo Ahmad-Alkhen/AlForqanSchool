@@ -88,7 +88,7 @@
     <script>
 
         function click_btn_delete(id){
-            WRN_PROFILE_DELETE = "هل تريد تأكيد حذف المادة؟";
+            WRN_PROFILE_DELETE = "هل تريد تأكيد حذف المادة!! وجميع العلامات المرتبطة بها؟";
              var checked = confirm(WRN_PROFILE_DELETE);
             if(checked == true) {
 
@@ -101,7 +101,25 @@
                 },
                 success: function(response) {
                     // remove deleted times rows
-                    $("#subject_rec"+id).remove();
+                    $("#subject_rec"+id).remove()
+
+                    //show  sweat alert message after delete
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.addEventListener('mouseenter', Swal.stopTimer)
+                                toast.addEventListener('mouseleave', Swal.resumeTimer)
+                            }
+                        })
+                        Toast.fire({
+                            icon: 'success',
+                            title: 'تم الحذف بنجاح'
+                        })
+
                 }
             });
              }

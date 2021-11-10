@@ -21,6 +21,8 @@ class pointController extends Controller
             $points=Point::with(['user'=>function($q){
                 $q->select('id','name');}])->
             with(['register'=>function($q){
+                $q->select('id','name');}])->
+            with(['admin'=>function($q){
                 $q->select('id','name');}])
             ->get();
         }else{
@@ -66,9 +68,9 @@ class pointController extends Controller
         }catch (\Exception $exception){
      //   return $exception ;
          toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.point.create');
         }
     }
-
 
     public function delete(Request $request){
         $pointId=  $request->id;

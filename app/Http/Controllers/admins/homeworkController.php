@@ -4,13 +4,9 @@ namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\homeworkRequest;
-use App\Http\Requests\pointRequest;
-use App\Http\Requests\registerRequest;
-use App\Models\admins\Admin;
+
 use App\Models\admins\Homework;
-use App\Models\admins\Point;
 use App\Models\admins\Register;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +17,8 @@ class homeworkController extends Controller
 
         if (Auth::user()->permission =='1'){
             $homeworks=Homework::with(['register'=>function($q){
+                $q->select('id','name');}])->
+            with(['admin'=>function($q){
                 $q->select('id','name');}])
                 ->get();
         }else{
@@ -57,19 +55,22 @@ class homeworkController extends Controller
               return redirect()->route('admin.homework.index')->with(['success'=>'تمت الإضافة بنجاح']);
 
         }catch (\Exception $exception){
-       return $exception ;
-        // toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+       //return $exception ;
+        toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.homework.index');
         }
     }
-
 
     public function delete(Request $request){
-        $pointId=  $request->id;
-        $point =Point::find($pointId) ;
+        $homeworkId=  $request->id;
+        $homework =Homework::find($homeworkId) ;
 
-        if($point){
-            $point->delete();
+        if($homework){
+            $homework->delete();
         }
     }
+
+
+
 
 }

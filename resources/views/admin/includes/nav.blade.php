@@ -5,7 +5,7 @@
                 <div class="b-bg">
 
                <!--    <i><img src="{{asset('assets/images/logo.png')}}"></i> -->
-                    <i class="fa fa-university"></i>
+                    <i class="fa fa-universal-access" aria-hidden="true"></i>
 
                 </div>
                 <span class="b-title">  ثانوية الفرقان</span>
@@ -38,8 +38,8 @@
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-users"></i></span><span class="pcoded-mtext">الطلاب</span></a>
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{route('admin.user.index')}}" class="">جميع الطلاب</a></li>
-
                         <li class=""><a href="{{route('admin.user.create')}}" class="">إضافة طالب</a></li>
+                        <li class=""><a href="{{route('admin.user.import')}}" class="">إضافة عدة طلاب</a></li>
                     </ul>
                 </li>
                 <li class="nav-item pcoded-hasmenu">
@@ -72,8 +72,10 @@
                     <a href="javascript:" class="nav-link "><span class="pcoded-micon"><i class="fa fa-tasks"></i></span><span class="pcoded-mtext">الواجب المنزلي</span></a>
                     <ul class="pcoded-submenu">
                         <li class=""><a href="{{route('admin.homework.index')}}" class="">جميع الواجبات المنزلية</a></li>
-
                         <li class=""><a href="{{route('admin.homework.create')}}" class="">إضافة واجب منزلي</a></li>
+
+                        <li class=""><a href="{{route('admin.homeworksFile.index')}}" class="">جميع الملفات  </a></li>
+                        <li class=""><a href="{{route('admin.homeworksFile.import')}}" class="">إضافة ملف </a></li>
                     </ul>
                 </li>
 

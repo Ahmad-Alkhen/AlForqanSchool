@@ -7,6 +7,7 @@ use App\Http\Requests\pointRequest;
 use App\Http\Requests\registerRequest;
 use App\Http\Requests\subjectRequest;
 use App\Models\admins\Admin;
+use App\Models\admins\Mark;
 use App\Models\admins\Notification;
 use App\Models\admins\Point;
 use App\Models\admins\Register;
@@ -24,8 +25,6 @@ class subjectController extends Controller
         return view('admin.subjects.index',compact('subjects'));
     }
 
-
-
     public function store(subjectRequest $request){
 
         try {
@@ -34,20 +33,22 @@ class subjectController extends Controller
                ]);
                 toast('تمت الإضافة بنجاح','success');
 
+            if (Auth::user()->permission !='1') {
                 Notification::create([
-                    'admin_id'=>Auth::id(),
-                    'event'=> ' تم إضافة المادة '  .  $request->subject .   ' من قبل المشرف  '  .  Auth::user()->name  ,
-                    'date'=>now(),
+                    'admin_id' => Auth::id(),
+                    'event' => ' تم إضافة المادة ' . $request->subject . ' من قبل المشرف  ' . Auth::user()->name,
+                    'date' => now(),
                 ]);
+            }
 
             return redirect()->route('admin.subject.index');
 
         }catch (\Exception $exception){
      //   return $exception ;
          toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+         return redirect()->route('admin.subject.index');
         }
     }
-
 
     public function delete(Request $request){
         $subjectId=  $request->id;
@@ -55,12 +56,16 @@ class subjectController extends Controller
 
         if($subject){
             $subject->delete();
-            Notification::create([
-                'admin_id'=>Auth::id(),
-                'event'=> ' تم حذف المادة '  .  $subject->name .   ' من قبل المشرف  '  .  Auth::user()->name  ,
-                'date'=>now(),
-            ]);
+            Mark::where('subject_id',$subject->id)->delete();
 
+
+            if (Auth::user()->permission !='1') {
+                Notification::create([
+                    'admin_id' => Auth::id(),
+                    'event' => ' تم حذف المادة ' . $subject->name . ' من قبل المشرف  ' . Auth::user()->name,
+                    'date' => now(),
+                ]);
+            }
         }
     }
 

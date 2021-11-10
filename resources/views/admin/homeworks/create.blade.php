@@ -1,8 +1,8 @@
 @extends('admin.template')
 @section('title','إضافة واجب ')
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.point.index')}}">  الواجبات المنزلية  </a></li>
-    <li class="breadcrumb-item"><a href="{{route('admin.point.create')}}"> إضافة واجب</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.homework.index')}}">  الواجبات المنزلية  </a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.homework.create')}}"> إضافة واجب</a></li>
 @endsection
 
 @section('content-template')
@@ -27,7 +27,7 @@
              <div class="input-group mb-3">
                  <label for="homework_info" class="col-sm-2 col-form-label">تفاصيل الواجب</label>
                  <textarea id='homework_info' name="info" type="text" class="form-control" placeholder="تفاصيل الواجب" required></textarea>
-                 @error('points')
+                 @error('info')
                  <div class="alert alert-danger error_mes">{{ $message }}</div>
                  @enderror
              </div>

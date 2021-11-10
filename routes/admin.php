@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Admin\Teacher;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>'guest:admin','namespace'=>'admins'],function(){
@@ -14,6 +15,16 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
 
     Route::get('/','dashController@index')->name('admin.dash');
     Route::get('logout','logoutController@index')->name('admin.logout');
+
+
+    /*---------------------- Account Route --------------------*/
+
+    Route::group(['prefix'=>'account'],function(){
+
+        Route::get('password','accountController@edit')->name('admin.account.password');
+        Route::post('update','accountController@update')->name('admin.account.password.update');
+    });
+
 
     /*---------------------- Admins Route --------------------*/
 
@@ -34,6 +45,12 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
         Route::get('/','userController@index')->name('admin.user.index');
         Route::get('create','userController@create')->name('admin.user.create');
         Route::post('store','userController@store')->name('admin.user.store');
+
+        Route::get('import','userController@import')->name('admin.user.import');
+        Route::post('upload','userController@upload')->name('admin.user.upload');
+        Route::get('download','userController@download')->name('admin.user.download');
+        Route::get('export', 'userController@export')->name('admin.user.export');
+
         Route::get('edit/{id}','userController@edit')->name('admin.user.edit');
         Route::post('update/{id}','userController@update')->name('admin.user.update');
         Route::get('delete/{id}','userController@delete')->name('admin.user.delete');
@@ -89,7 +106,22 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
         Route::post('store','homeworkController@store')->name('admin.homework.store');
         Route::post('delete','homeworkController@delete')->name('admin.homework.delete');
 
+
     });
+
+    /*---------------------- homeworks Files Route --------------------*/
+    Route::group(['prefix'=>'homeworks_files'],function(){
+
+        Route::get('/','homeworkFileController@index')->name('admin.homeworksFile.index');
+        Route::get('import','homeworkFileController@import')->name('admin.homeworksFile.import');
+        Route::post('upload','homeworkFileController@upload')->name('admin.homeworksFile.upload');
+        Route::get('download/{id}','homeworkFileController@download')->name('admin.homeworksFile.download');
+        Route::post('delete','homeworkFileController@delete')->name('admin.homeworksFile.delete');
+
+
+
+    });
+
 
     /*---------------------- marks Route --------------------*/
     Route::group(['prefix'=>'marks'],function(){
@@ -113,7 +145,7 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
         Route::post('store','noteController@store')->name('admin.note.store');
         Route::get('edit/{id}','noteController@edit')->name('admin.note.edit');
         Route::post('update/{id}','noteController@update')->name('admin.note.update');
-        Route::post('active','noteController@active')->name('admin.note.active');
+        Route::post('active','noteController@active')->name('admin.note.active')->middleware('checkPermission');
         Route::get('delete/{id}','noteController@delete')->name('admin.note.delete');
     });
 
@@ -130,5 +162,7 @@ Route::group(["middleware"=>'auth:admin','namespace'=>'admins'], function () {
         Route::get('/','messageController@index')->name('admin.message.index')->middleware('checkPermission');
 
     });
+
+
 
 });

@@ -44,6 +44,7 @@ class noteController extends Controller
         }catch (\Exception $exception){
 
           toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.note.index');
         }
     }
 
@@ -76,6 +77,7 @@ class noteController extends Controller
             }
         }catch (\Exception $exception){
             toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.note.index');
         }
     }
 

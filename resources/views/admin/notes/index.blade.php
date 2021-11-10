@@ -30,13 +30,15 @@
                         <td>{{$note->note}}</td>
                         <td>{{$note->date}}</td>
                     @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
-                        <td>{{$note->admin->name}}</td>
+                        <td>@if(isset($note->admin->name)){{$note->admin->name}}@endif</td>
                         <td id="{{'tdActive'.$note->id}}" >{{$note->active=='1'? 'مفعلة':'غير مفعلة'}}</td>
                     @endif
                         <td>
                             <a onclick="return confirm('هل تريد تأكيد الحذف؟')" href="{{route('admin.note.delete',$note->id)}}" title="حذف"> <i class="feather icon-x-circle"></i></a>
                             <a href="{{route('admin.note.edit',$note->id)}}" title="تعديل" > <i class="feather icon-edit"></i></a>
-                            <a  class="note_active"  data-id="{{$note->id}}"  title="تفعيل" > <i class="feather icon-check"></i></a>
+                        @if(\Illuminate\Support\Facades\Auth::user()->permission=='1')
+                              <a  class="note_active"  data-id="{{$note->id}}"  title="تفعيل" > <i class="feather icon-check"></i></a>
+                        @endif
                         </td>
                     </tr>
                 @endforeach

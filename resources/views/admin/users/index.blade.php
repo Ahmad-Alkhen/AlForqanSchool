@@ -7,6 +7,10 @@
 
 @section('content-template')
     <div class="card">
+        <div class="mb-5 text-right">
+            <a class="btn btn-glow-info" title="انشاء ملف اكسل يحتوي معلومات جميع الطلاب" href="{{route('admin.user.export')}}">إنشاء ملف  <i class="fa fa-download" aria-hidden="true"></i>
+            </a>
+        </div>
         <table class="table table-striped table-hover" id="students-table">
             <thead>
             <tr>

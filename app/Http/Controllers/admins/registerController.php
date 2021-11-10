@@ -56,6 +56,7 @@ class registerController extends Controller
         }catch (\Exception $exception){
 
           toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.register.index');
         }
     }
 
@@ -94,11 +95,12 @@ class registerController extends Controller
                     'admin_id'=>$admin_id,
                     'active'=>$active,
                 ]);
-                  toast('تمت التعديل بنجاح','success');
-                return redirect()->route('admin.register.index')->with(['success'=>'تمت التعديل بنجاح']);
+                  toast('تم التعديل بنجاح','success');
+                return redirect()->route('admin.register.index')->with(['success'=>'تم التعديل بنجاح']);
             }
         }catch (\Exception $exception){
             toast('حصل خطأ يرجى المحاولة لاحقاً ','error');
+            return redirect()->route('admin.register.index');
         }
     }
 

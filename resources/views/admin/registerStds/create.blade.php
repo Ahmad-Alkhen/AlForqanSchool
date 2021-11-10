@@ -1,8 +1,8 @@
 @extends('admin.template')
 @section('title','إضافة طلاب إلى الصف')
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}">  الطلاب في الصفوف  </a></li>
-    <li class="breadcrumb-item"><a href="{{route('admin.register.create')}}"> إضافة طلاب إلى الصف</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.registerStd.index')}}">  الطلاب في الصفوف  </a></li>
+    <li class="breadcrumb-item"><a href=""> إضافة طلاب إلى الصف</a></li>
 @endsection
 
 @section('content-template')

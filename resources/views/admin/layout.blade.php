@@ -75,5 +75,6 @@
 <!-- Required Js -->
 @include('admin.includes.scripts')
 @include('sweetalert::alert')
+
 </body>
 </html>

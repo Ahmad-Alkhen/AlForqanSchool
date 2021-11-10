@@ -1,8 +1,8 @@
 @extends('admin.template')
-@section('title','الصفوف')
+@section('title','الطلاب في الصفوف')
 
 @section('route-list')
-    <li class="breadcrumb-item"><a href="{{route('admin.register.index')}}"> الصفوف</a></li>
+    <li class="breadcrumb-item"><a href="{{route('admin.registerStd.index')}}"> الطلاب في الصفوف</a></li>
 @endsection
 
 @section('content-template')
