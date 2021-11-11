@@ -33,9 +33,8 @@ Contain :
 
 ### short clip
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=liJVSwOiiwg
-" target="_blank"><img src="https://github.com/Ahmad-Alkhen/AlForqanSchool/blob/main/demo.png" 
-alt="AlForqan School" width="240" height="180" border="10" /></a>
+
+[![AlForqan School](https://img.youtube.com/vi/2JDa7yYlNnk/0.jpg)](https://www.youtube.com/watch?v=2JDa7yYlNnk)
 
 
 ## License
